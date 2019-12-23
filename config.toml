@@ -1,59 +1,37 @@
 baseURL = "http://example.org/"
 languageCode = "en-us"
-title = "My New Hugo Siteo"
+title = "My New Hugo Site"
+theme = "hugo-theme-nix"
 
-[[menu.main]]
-    url = "/home/"
-    name = "Files"
-    weight = 6
+[params]
+  Name = "Jeff Bilder"
+  HeaderUsername = "jeff"
+  HeaderHostname = "jeffbilder.com"
+  About = "info_about_you"
+  ProfilePicture = "static/me.jpg"
+  CvURL = "your_cv_url"
+  #Email = "your_email"
+  GithubID = "jeffbildz"
+  LinkedInID = "https://www.linkedin.com/in/jjbilder/"
+  #Mobile = "+1-201-555-0123"
+  #Phone = "+1-201-555-0123"
+  TwitterID = "jeffbilder"
 
-[[menu.main]]
-    url = "/dl/"
-    name = "Download"
-    weight = 7
-
-[[menu.footer]]
-    identifier = "home"
-    name = "home"
-    url = "/"
-    weight = 1
-
-[[menu.footer]]
-    identifier = "about"
-    name = "About"
-    url = "/about/"
-    weight = 2
-
-# Social icons to be shown on the right-hand side of the navigation bar
-# The "name" field should match the name of the icon to be used
-# The list of available icons can be found at http://fontawesome.io/icons/
-
-[[menu.icon]]
-    url = "mailto:me@xxx.com"
-    name = "envelope-o"
-    weight = 1
-
-[[menu.icon]]
-    url = "https://github.com/username/"
-    name = "github"
-    weight = 1
-
-[[menu.icon]]
-    url = "https://twitter.com/username"
-    name = "twitter"
-    weight = 1
-
-[[menu.icon]]
-    url = "https://www.instagram.com/username/"
-    name = "instagram"
-    weight = 1
-
-[[menu.main]]
-    url = "/zone/"
-    name = "Zone"
-    weight = 1
-
-[[menu.main]]
-    url = "/gallery/"
-    name = "Gallery"
-    weight = 2
+[menu]
+  [[menu.header]]
+    identifier = "post"
+    name = "posts"
+    weight = 0
+    url = "/post"
+  [[menu.header]]
+    parent = "post"
+    name = "All Posts"
+    url = "/post"
+  [[menu.header]]
+    parent = "post"
+    name = "categories"
+    url = "/categories"
+  [[menu.header]]
+    parent = "post"
+    name = "tags"
+    url = "/tags"
