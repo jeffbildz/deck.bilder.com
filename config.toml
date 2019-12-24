@@ -1,11 +1,11 @@
-baseURL = "http://jeffbilder.com/"
+baseURL = "https://jeffbilder.com/"
 languageCode = "en-us"
 title = "Jeff Bilder"
 theme = "hugo-theme-nix"
 
 [params]
   Name = "Jeff Bilder"
-  HeaderUsername = "jeff"
+  HeaderUsername = "user"
   HeaderHostname = "jeffbilder.com"
   About = "info_about_you"
   ProfilePicture = "me.jpg"
