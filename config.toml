@@ -1,6 +1,6 @@
-baseURL = "http://example.org/"
+baseURL = "http://jeffbilder.com/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Jeff Bilder"
 theme = "hugo-theme-nix"
 
 [params]
@@ -9,7 +9,7 @@ theme = "hugo-theme-nix"
   HeaderHostname = "jeffbilder.com"
   About = "info_about_you"
   ProfilePicture = "static/me.jpg"
-  CvURL = "your_cv_url"
+  #CvURL = "your_cv_url"
   #Email = "your_email"
   GithubID = "jeffbildz"
   LinkedInID = "https://www.linkedin.com/in/jjbilder/"
