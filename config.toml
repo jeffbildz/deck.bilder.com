@@ -1,4 +1,4 @@
-baseURL = "http://jeffbilder.com/"
+baseURL = "http://jeffbilder.onrender.com "
 languageCode = "en-us"
 title = "Jeff Bilder"
 theme = "hugo-theme-nix"
