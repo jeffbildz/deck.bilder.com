@@ -9,13 +9,9 @@ theme = "hugo-theme-nix"
   HeaderHostname = "jeffbilder.com"
   About = "info_about_you"
   ProfilePicture = "me.jpg"
-  #CvURL = "your_cv_url"
-  #Email = "your_email"
   GithubID = "jeffbildz"
   LinkedInID = "jjbilder"
-  #Mobile = "+1-201-555-0123"
-  #Phone = "+1-201-555-0123"
-  TwitterID = "jeffbilder"
+  TwitterID = "bilderJeff"
 
 [menu]
   [[menu.header]]
