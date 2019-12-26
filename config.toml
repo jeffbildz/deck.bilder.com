@@ -7,13 +7,18 @@ theme = "hugo-theme-nix"
   Name = "Jeff Bilder"
   HeaderUsername = "user"
   HeaderHostname = "jeffbilder.com"
-  About = "info_about_you"
+  About = "Welcome to my website.  I specialize in desiging cloud architectures and automation.  Feel free to browse some of the work that I've done and let me know if you'd like to collaborate."
   ProfilePicture = "me.jpg"
   GithubID = "jeffbildz"
   LinkedInID = "jjbilder"
   TwitterID = "bilderJeff"
 
 [menu]
+  [[menu.header]]
+    identifier = "about.me"
+    name = "about.me"
+    weight = 0
+    url = "/about.me"
   [[menu.header]]
     identifier = "post"
     name = "posts"
