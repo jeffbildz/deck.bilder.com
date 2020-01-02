@@ -15,10 +15,10 @@ theme = "hugo-theme-nix"
 
 [menu]
   [[menu.header]]
-    identifier = "about.me"
-    name = "about.me"
+    identifier = "about"
+    name = "about"
     weight = 0
-    url = "/about.me"
+    url = "/about"
   [[menu.header]]
     identifier = "post"
     name = "posts"
