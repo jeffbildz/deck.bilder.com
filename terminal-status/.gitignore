@@ -1,0 +1,4 @@
+# Hugo build output — the GitOps pipeline builds this fresh on every push
+/public/
+/resources/_gen/
+.hugo_build.lock

@@ -38,10 +38,10 @@
     <h2 class="sec-title reveal">What I bring to a team</h2>
     <p class="sec-lead reveal">Four disciplines, one operating principle: make infrastructure boring. Predictable, reproducible, and secure by default — so engineers can focus on the product, not the plumbing.</p>
     <div class="grid">
-      <article class="card reveal"><div class="idx">01 — cloud_architecture/</div><h3><span class="g">▸</span> Cloud Architecture</h3><p>Multi-region, multi-account AWS estates designed for cost, compliance, and scale — including regulated GovCloud workloads.</p><ul><li>10+ AWS accounts: US · EU · GovCloud</li><li>Terraform landing zones &amp; modules</li><li>datacenter → cloud migration (IaaS / OpenStack)</li></ul></article>
-      <article class="card reveal"><div class="idx">02 — devops/</div><h3><span class="g">▸</span> DevOps &amp; Automation</h3><p>CI/CD and infrastructure-as-code that make deployments consistent and boring. Everything peer-reviewed in Git.</p><ul><li>CI/CD with Ansible, TeamCity &amp; GitHub</li><li>IaC: Terraform, Ansible, SaltStack</li><li>containerization: Podman → ECR/ECS</li></ul></article>
-      <article class="card reveal"><div class="idx">03 — infrastructure/</div><h3><span class="g">▸</span> Infrastructure Management</h3><p>Operating business-critical SaaS at 24×7×365 with SLA penalties — across hundreds of servers and multiple datacenters.</p><ul><li>600+ servers across 4 datacenters</li><li>observability: Datadog, Grafana, ELK, Zabbix</li><li>active-active DR &amp; capacity planning</li></ul></article>
-      <article class="card reveal"><div class="idx">04 — security_ops/</div><h3><span class="g">▸</span> Security Operations</h3><p>Compliance and security built into the pipeline — from STIG-hardened images to audit-ready controls.</p><ul><li>DISA STIG CAT II compliant imaging</li><li>SOC 1 audits &amp; RBAC governance</li><li>IDS: Suricata / Snort / OSSEC</li></ul></article>
+      <article class="card reveal"><div class="idx">01 — cloud_architecture/</div><h3><span class="g">▸</span> Cloud Architecture</h3><p>Multi-region, multi-account estates across AWS commercial, GovCloud, and Azure — designed for scale, compliance, and clean networking.</p><ul><li>Transit Gateway hub-and-spoke design</li><li>10+ accounts: US · EU · GovCloud</li><li>Terraform-baselined VPC / IAM / observability</li></ul></article>
+      <article class="card reveal"><div class="idx">02 — devops/</div><h3><span class="g">▸</span> DevOps Leadership</h3><p>Leading a team of 7 — and the pipelines, IaC, and Agile process that let them ship consistently. Everything peer-reviewed in Git.</p><ul><li>team of 7 · Scrum on Azure DevOps Boards</li><li>reusable ADO YAML pipeline templates</li><li>IaC: Terraform, Ansible, SaltStack</li></ul></article>
+      <article class="card reveal"><div class="idx">03 — infrastructure/</div><h3><span class="g">▸</span> Infrastructure & Platform</h3><p>Operating business-critical SaaS at 24×7×365, on containers and auto-scaling build infrastructure, with cost kept honest.</p><ul><li>ECS / Fargate / EKS container platforms</li><li>EC2 ASG build agents (Playwright, 1-hr SLA)</li><li>CloudZero multi-account cost telemetry</li></ul></article>
+      <article class="card reveal"><div class="idx">04 — security_ops/</div><h3><span class="g">▸</span> Security Operations</h3><p>Security and compliance built into the platform — from least-privilege IAM to STIG-hardened images, audit-ready by design.</p><ul><li>IAM least-privilege audits (14 environments)</li><li>DISA STIG CAT II compliant imaging</li><li>SOC 1 audits · gMSA / Kerberos</li></ul></article>
     </div>
   </section>
 
@@ -51,15 +51,16 @@
     <h2 class="sec-title reveal">Tools I reach for</h2>
     <p class="sec-lead reveal">Opinionated, but never dogmatic — the right tool for the blast radius.</p>
     <div class="stack reveal">
-      <span class="chip"><span class="b">cloud:</span> AWS</span><span class="chip"><span class="b">cloud:</span> Azure</span><span class="chip"><span class="b">cloud:</span> GCP</span><span class="chip"><span class="b">cloud:</span> GovCloud</span>
-      <span class="chip"><span class="b">iac:</span> Terraform</span><span class="chip"><span class="b">iac:</span> Ansible</span><span class="chip"><span class="b">iac:</span> SaltStack</span><span class="chip"><span class="b">iac:</span> CloudFormation</span>
-      <span class="chip"><span class="b">containers:</span> Podman</span><span class="chip"><span class="b">containers:</span> ECR / ECS</span>
-      <span class="chip"><span class="b">ci/cd:</span> TeamCity</span><span class="chip"><span class="b">ci/cd:</span> GitHub</span>
-      <span class="chip"><span class="b">obs:</span> Datadog</span><span class="chip"><span class="b">obs:</span> Grafana</span><span class="chip"><span class="b">obs:</span> Zabbix</span><span class="chip"><span class="b">obs:</span> ELK / Kibana</span>
-      <span class="chip"><span class="b">sec:</span> DISA STIG</span><span class="chip"><span class="b">sec:</span> Suricata / Snort</span><span class="chip"><span class="b">sec:</span> OSSEC</span><span class="chip"><span class="b">sec:</span> SOC 1</span>
-      <span class="chip"><span class="b">data:</span> PostgreSQL / Aurora</span><span class="chip"><span class="b">data:</span> Elasticsearch</span><span class="chip"><span class="b">data:</span> MySQL / MSSQL</span>
-      <span class="chip"><span class="b">net:</span> Cisco · BGP / OSPF</span><span class="chip"><span class="b">net:</span> NGINX / F5</span>
-      <span class="chip"><span class="b">lang:</span> Python</span><span class="chip"><span class="b">lang:</span> Bash</span><span class="chip"><span class="b">lang:</span> Perl</span><span class="chip"><span class="b">lang:</span> PowerShell</span>
+      <span class="chip"><span class="b">cloud:</span> AWS</span><span class="chip"><span class="b">cloud:</span> GovCloud</span><span class="chip"><span class="b">cloud:</span> Azure</span><span class="chip"><span class="b">cloud:</span> GCP</span>
+      <span class="chip"><span class="b">iac:</span> Terraform</span><span class="chip"><span class="b">iac:</span> Terraform Cloud</span><span class="chip"><span class="b">iac:</span> Ansible</span><span class="chip"><span class="b">iac:</span> SaltStack</span>
+      <span class="chip"><span class="b">ci/cd:</span> Azure DevOps</span><span class="chip"><span class="b">ci/cd:</span> GitHub Actions</span><span class="chip"><span class="b">ci/cd:</span> OIDC federation</span>
+      <span class="chip"><span class="b">containers:</span> ECS / Fargate</span><span class="chip"><span class="b">containers:</span> EKS</span><span class="chip"><span class="b">containers:</span> Podman</span>
+      <span class="chip"><span class="b">net:</span> Transit Gateway</span><span class="chip"><span class="b">net:</span> Fortinet</span><span class="chip"><span class="b">net:</span> Cisco · BGP/OSPF</span>
+      <span class="chip"><span class="b">obs:</span> Datadog</span><span class="chip"><span class="b">obs:</span> Sumo Logic</span><span class="chip"><span class="b">obs:</span> CloudZero</span><span class="chip"><span class="b">obs:</span> Grafana / ELK</span>
+      <span class="chip"><span class="b">sec:</span> IAM least-privilege</span><span class="chip"><span class="b">sec:</span> DISA STIG</span><span class="chip"><span class="b">sec:</span> gMSA / Kerberos</span>
+      <span class="chip"><span class="b">data:</span> Aurora PostgreSQL</span><span class="chip"><span class="b">data:</span> Elasticsearch / Redis</span>
+      <span class="chip"><span class="b">agile:</span> Scrum · ADO Boards</span>
+      <span class="chip"><span class="b">lang:</span> Python</span><span class="chip"><span class="b">lang:</span> Bash</span><span class="chip"><span class="b">lang:</span> PowerShell</span>
     </div>
     <p class="note reveal"># swap any of these for what your org already runs — the principles travel.</p>
   </section>
