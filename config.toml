@@ -23,7 +23,6 @@ theme = "terminal-status"
   # Your real handles (used by the contact section + SEO)
   github   = "jeffbildz"
   linkedin = "jjbilder"
-  twitter  = "bilderJeff"
   # email  = "you@jeffbilder.com"   # uncomment to add an email button
 
   # Hero role chips — edit/add freely

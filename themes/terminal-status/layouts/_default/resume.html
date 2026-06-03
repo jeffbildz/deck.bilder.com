@@ -1,0 +1,72 @@
+{{ define "main" }}
+<div class="wrap">
+  <div class="page-head reveal in">
+    <div class="crumb"><a href="{{ "/" | relURL }}"><span class="pmt">jeff@bilder</span>:~$</a> cat ~/experience.log</div>
+    <h1>{{ .Title }}</h1>
+  </div>
+
+  {{ with .Params.stats }}
+  <div class="stats reveal in">
+    {{ range . }}
+      <div class="stat"><div class="num">{{ .num }}</div><div class="lbl">{{ .label }}</div></div>
+    {{ end }}
+  </div>
+  {{ end }}
+
+  {{ with .Content }}<div class="prose reveal in" style="padding-top:8px">{{ . }}</div>{{ end }}
+
+  <section style="padding:24px 0 8px">
+    <div class="sec-head reveal in"><span class="pmt">$</span> git log <span style="color:var(--amber)">--career --oneline</span></div>
+    <h2 class="sec-title reveal in">Experience</h2>
+    <div class="timeline">
+      {{ range .Params.jobs }}
+      <div class="job reveal{{ if .current }} current{{ end }}">
+        <div class="job-top">
+          <div>
+            <div class="title">{{ if .current }}<span class="g">▸</span> {{ end }}{{ .title }}</div>
+            <div class="co">{{ .company }} <span class="loc">· {{ .location }}</span></div>
+          </div>
+          <div class="when">{{ .start }} – {{ if eq .end "Present" }}<span class="now">Present</span>{{ else }}{{ .end }}{{ end }}</div>
+        </div>
+        {{ with .highlights }}
+        <ul>{{ range . }}<li>{{ . | safeHTML }}</li>{{ end }}</ul>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+
+    {{ with .Params.earlier }}
+    <div class="earlier reveal">
+      <h3># earlier roles</h3>
+      {{ range . }}
+      <div class="row"><span class="c">{{ .company }}</span><span class="r">{{ .title }}</span><span class="d">{{ .when }}</span></div>
+      {{ end }}
+    </div>
+    {{ end }}
+  </section>
+
+  {{ if .Params.certs }}
+  <section style="padding:32px 0 8px">
+    <div class="sec-head reveal"><span class="pmt">$</span> ls <span style="color:var(--amber)">~/certifications</span></div>
+    <h2 class="sec-title reveal">Certifications &amp; Education</h2>
+    <div class="certs reveal">
+      {{ range .Params.certs }}
+      <div class="cert"><b>{{ .name }}</b>{{ with .year }}<span class="yr">{{ . }}</span>{{ end }}<br><span style="color:var(--dim)">{{ .org }}</span></div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  <section style="padding:32px 0 50px">
+    <div class="contact reveal">
+      <div class="prompt">$ ./connect.sh --with {{ .Site.Params.username | default "jeff" }}</div>
+      <h2>Let's talk about your infrastructure.</h2>
+      <p>25 years of building resilient, automated, secure platforms — happy to put that to work for your team.</p>
+      <div class="socials">
+        {{ with .Site.Params.linkedin }}<a class="social" href="https://linkedin.com/in/{{ . }}" target="_blank" rel="noopener">▸ LinkedIn</a>{{ end }}
+        {{ with .Site.Params.github }}<a class="social" href="https://github.com/{{ . }}" target="_blank" rel="noopener">▸ GitHub</a>{{ end }}
+      </div>
+    </div>
+  </section>
+</div>
+{{ end }}
