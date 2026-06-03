@@ -1,38 +1,37 @@
 baseURL = "https://jeffbilder.com/"
 languageCode = "en-us"
 title = "Jeff Bilder"
-theme = "hugo-theme-nix"
+theme = "terminal-status"
+
+# Generate RSS + sitemap
+[outputs]
+  home = ["HTML", "RSS"]
+
+[pagination]
+  pagerSize = 8
 
 [params]
-  Name = "Jeff Bilder"
-  HeaderUsername = "user"
-  HeaderHostname = "jeffbilder.com"
-  About = "Welcome to my website. I specialize in designing cloud architectures and automation. Feel free to browse some of the work that I've done and let me know if you'd like to collaborate."
-  ProfilePicture = "me.jpg"
-  GithubID = "jeffbildz"
-  LinkedInID = "jjbilder"
-  TwitterID = "bilderJeff"
+  author = "Jeff Bilder"
+  username = "jeff"
+  tagline = "Cloud Architect · DevOps · SecOps"
+  role = "Cloud Architect · DevOps & SecOps Leader"
+  focus = "resilient infra, automation, security at scale"
+  description = "Cloud architect and operations leader helping organizations ship faster and sleep better — turning sprawling, fragile systems into automated, observable, and secure platforms."
+  status = "available for engagements"
+  avatar = "/me.jpg"
 
-[menu]
-  [[menu.header]]
-    identifier = "about"
-    name = "about"
-    weight = 0
-    url = "/about/"
-  [[menu.header]]
-    identifier = "post"
-    name = "posts"
-    weight = 0
-    url = "/post"
-  [[menu.header]]
-    parent = "post"
-    name = "All Posts"
-    url = "/post"
-  [[menu.header]]
-    parent = "post"
-    name = "categories"
-    url = "/categories"
-  [[menu.header]]
-    parent = "post"
-    name = "tags"
-    url = "/tags"
+  # Your real handles (used by the contact section + SEO)
+  github   = "jeffbildz"
+  linkedin = "jjbilder"
+  twitter  = "bilderJeff"
+  # email  = "you@jeffbilder.com"   # uncomment to add an email button
+
+  # Hero role chips — edit/add freely
+  roles = ["cloud_architect", "devops_manager", "infrastructure_manager", "security_operations"]
+
+[markup]
+  [markup.highlight]
+    style = "github-dark"   # code block theme; matches the dark UI
+    noClasses = true
+  [markup.goldmark.renderer]
+    unsafe = true           # allow raw HTML in markdown posts when you need it

@@ -1,0 +1,41 @@
+{{ define "main" }}
+<div class="wrap">
+  {{ if .Data.Terms }}
+    {{/* TERMS INDEX  (e.g. /tags/)  → show all terms as chips */}}
+    <div class="list-head reveal in">
+      <div class="sec-head"><span class="pmt">$</span> ls <span style="color:var(--amber)">~/{{ .Title | lower }}</span></div>
+      <h1 class="sec-title">{{ .Title }}</h1>
+      {{ with .Content }}<div class="sec-lead">{{ . }}</div>{{ end }}
+    </div>
+    <div class="stack reveal in">
+      {{ range .Data.Terms.ByCount }}
+        <a class="chip" href="{{ "/" | relURL }}{{ $.Data.Plural }}/{{ .Name | urlize }}/">#{{ .Name }} <span class="b">{{ .Count }}</span></a>
+      {{ end }}
+    </div>
+  {{ else }}
+    {{/* SINGLE TERM  (e.g. /tags/gitops/)  → list posts with that term */}}
+    <div class="list-head reveal in">
+      <div class="sec-head"><span class="pmt">$</span> grep -rl <span style="color:var(--amber)">#{{ .Title }}</span> ~/writing</div>
+      <h1 class="sec-title">#{{ .Title }}</h1>
+    </div>
+    {{ $paginator := .Paginate .Pages }}
+    {{ if $paginator.Pages }}
+      {{ range $paginator.Pages }}
+        <a class="post-row reveal" href="{{ .Permalink }}">
+          <span class="date">{{ .Date.Format "2006-01-02" }}</span>
+          <span class="title">{{ .Title }}</span>
+          {{ with .Params.tags }}<span class="tag">{{ index . 0 }}</span>{{ end }}
+        </a>
+      {{ end }}
+      {{ if gt $paginator.TotalPages 1 }}
+      <div class="pagination">
+        {{ if $paginator.HasPrev }}<a href="{{ $paginator.Prev.URL }}">← prev</a>{{ end }}
+        {{ range $paginator.Pagers }}{{ if eq . $paginator }}<span class="active">{{ .PageNumber }}</span>{{ else }}<a href="{{ .URL }}">{{ .PageNumber }}</a>{{ end }}{{ end }}
+        {{ if $paginator.HasNext }}<a href="{{ $paginator.Next.URL }}">next →</a>{{ end }}
+      </div>
+      {{ end }}
+    {{ else }}<p class="note"># no posts with this tag yet.</p>{{ end }}
+    <div style="padding:24px 0 40px"><a href="{{ "/tags/" | relURL }}" class="btn ghost">← all tags</a></div>
+  {{ end }}
+</div>
+{{ end }}

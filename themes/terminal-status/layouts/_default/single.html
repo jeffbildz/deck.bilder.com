@@ -1,0 +1,28 @@
+{{ define "main" }}
+<div class="wrap">
+  <div class="page-head reveal in">
+    <div class="crumb">
+      <a href="{{ "/" | relURL }}"><span class="pmt">jeff@bilder</span>:~$</a>
+      {{ if eq .Section "post" }}cd ~/writing/{{ .File.BaseFileName }}{{ else }}cd ~/{{ .File.BaseFileName }}{{ end }}
+    </div>
+    <h1>{{ .Title }}</h1>
+    {{ if eq .Section "post" }}
+    <div class="post-meta">
+      <span>{{ .Date.Format "2006-01-02" }}</span>
+      <span>· {{ .ReadingTime }} min read</span>
+      {{ range .Params.tags }}<a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="tag">{{ . }}</a>{{ end }}
+    </div>
+    {{ end }}
+  </div>
+
+  <article class="prose reveal in">
+    {{ .Content }}
+  </article>
+
+  {{ if eq .Section "post" }}
+  <div class="wrap" style="padding:0 0 40px">
+    <a href="{{ "/post/" | relURL }}" class="btn ghost">← back to all posts</a>
+  </div>
+  {{ end }}
+</div>
+{{ end }}

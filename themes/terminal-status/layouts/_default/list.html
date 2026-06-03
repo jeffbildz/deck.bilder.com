@@ -1,0 +1,29 @@
+{{ define "main" }}
+<div class="wrap">
+  <div class="list-head reveal in">
+    <div class="sec-head"><span class="pmt">$</span> ls -lt <span style="color:var(--amber)">~/{{ .Title | lower }}</span></div>
+    <h1 class="sec-title">{{ .Title }}</h1>
+    {{ with .Content }}<div class="sec-lead">{{ . }}</div>{{ end }}
+  </div>
+
+  {{ $paginator := .Paginate .Pages }}
+  {{ if $paginator.Pages }}
+    {{ range $paginator.Pages }}
+      <a class="post-row reveal" href="{{ .Permalink }}">
+        <span class="date">{{ .Date.Format "2006-01-02" }}</span>
+        <span class="title">{{ .Title }}</span>
+        {{ with .Params.tags }}<span class="tag">{{ index . 0 }}</span>{{ end }}
+      </a>
+    {{ end }}
+    {{ if gt $paginator.TotalPages 1 }}
+    <div class="pagination">
+      {{ if $paginator.HasPrev }}<a href="{{ $paginator.Prev.URL }}">← prev</a>{{ end }}
+      {{ range $paginator.Pagers }}{{ if eq . $paginator }}<span class="active">{{ .PageNumber }}</span>{{ else }}<a href="{{ .URL }}">{{ .PageNumber }}</a>{{ end }}{{ end }}
+      {{ if $paginator.HasNext }}<a href="{{ $paginator.Next.URL }}">next →</a>{{ end }}
+    </div>
+    {{ end }}
+  {{ else }}
+    <p class="note"># nothing here yet — add markdown to /content/post/.</p>
+  {{ end }}
+</div>
+{{ end }}

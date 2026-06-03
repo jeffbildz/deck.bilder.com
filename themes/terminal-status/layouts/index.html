@@ -1,0 +1,101 @@
+{{ define "main" }}
+<div class="wrap" id="top">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="term reveal in">
+      <div class="term-bar">
+        <span class="tc r"></span><span class="tc y"></span><span class="tc g"></span>
+        <span class="term-title">{{ .Site.Params.username | default "jeff" }}@bilder — zsh — 96×24</span>
+      </div>
+      <div class="term-body">
+        <div class="ln"><span class="pmt">$</span><span class="cmd" id="typed"></span><span class="cursor" id="cur"></span></div>
+        <div id="whoami" style="opacity:0;transition:opacity .5s">
+          <div class="out"><span class="k">name</span>: <span class="v">{{ .Site.Params.author }}</span></div>
+          <div class="out"><span class="k">role</span>: <span class="v">{{ .Site.Params.role }}</span></div>
+          <div class="out"><span class="k">focus</span>: <span class="v">{{ .Site.Params.focus }}</span></div>
+          <div class="out"><span class="k">status</span>: <span class="v" style="color:var(--accent)">operational ✓</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h1 class="reveal">I design, automate, and <span class="hl">secure</span><br>cloud infrastructure at scale.</h1>
+    <p class="sub reveal">{{ .Site.Params.description }}</p>
+
+    <div class="roles reveal">
+      {{ range .Site.Params.roles }}<span class="role">{{ . }}</span>{{ end }}
+    </div>
+
+    <div class="cta-row reveal">
+      <a href="#contact" class="btn primary">$ start a conversation</a>
+      <a href="{{ "/post/" | relURL }}" class="btn ghost">read the blog →</a>
+    </div>
+  </header>
+
+  <!-- CAPABILITIES (edit freely) -->
+  <section id="capabilities">
+    <div class="sec-head reveal"><span class="pmt">$</span> ls <span class="arg">~/capabilities</span></div>
+    <h2 class="sec-title reveal">What I bring to a team</h2>
+    <p class="sec-lead reveal">Four disciplines, one operating principle: make infrastructure boring. Predictable, reproducible, and secure by default — so engineers can focus on the product, not the plumbing.</p>
+    <div class="grid">
+      <article class="card reveal"><div class="idx">01 — cloud_architecture/</div><h3><span class="g">▸</span> Cloud Architecture</h3><p>Well-architected, cost-aware designs across AWS, Azure, and GCP. Multi-account landing zones, networking, and migration strategies that scale without surprises.</p><ul><li>landing zones &amp; account strategy</li><li>cost &amp; reliability optimization</li><li>cloud migration &amp; modernization</li></ul></article>
+      <article class="card reveal"><div class="idx">02 — devops/</div><h3><span class="g">▸</span> DevOps &amp; Platform Engineering</h3><p>CI/CD pipelines, GitOps workflows, and internal platforms that turn deploys into non-events. Ship many times a day with confidence.</p><ul><li>GitOps &amp; CI/CD (Actions, Argo, Flux)</li><li>IaC with Terraform &amp; Pulumi</li><li>developer platforms &amp; golden paths</li></ul></article>
+      <article class="card reveal"><div class="idx">03 — infrastructure/</div><h3><span class="g">▸</span> Infrastructure Management</h3><p>Kubernetes, observability, and resilient systems engineering. Infrastructure that heals itself and tells you what it's doing.</p><ul><li>Kubernetes &amp; container platforms</li><li>observability &amp; SLOs</li><li>capacity, DR &amp; resilience</li></ul></article>
+      <article class="card reveal"><div class="idx">04 — security_ops/</div><h3><span class="g">▸</span> Security Operations</h3><p>Security woven into the pipeline, not bolted on. DevSecOps, policy-as-code, and a posture that holds up to auditors and attackers alike.</p><ul><li>DevSecOps &amp; policy-as-code</li><li>identity, secrets &amp; zero-trust</li><li>compliance &amp; threat detection</li></ul></article>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section id="stack">
+    <div class="sec-head reveal"><span class="pmt">$</span> cat <span class="arg">stack.yaml</span></div>
+    <h2 class="sec-title reveal">Tools I reach for</h2>
+    <p class="sec-lead reveal">Opinionated, but never dogmatic — the right tool for the blast radius.</p>
+    <div class="stack reveal">
+      <span class="chip"><span class="b">cloud:</span> AWS</span><span class="chip"><span class="b">cloud:</span> Azure</span><span class="chip"><span class="b">cloud:</span> GCP</span>
+      <span class="chip"><span class="b">iac:</span> Terraform</span><span class="chip"><span class="b">iac:</span> Pulumi</span><span class="chip"><span class="b">iac:</span> Ansible</span>
+      <span class="chip"><span class="b">orch:</span> Kubernetes</span><span class="chip"><span class="b">orch:</span> Helm</span>
+      <span class="chip"><span class="b">gitops:</span> Argo CD</span><span class="chip"><span class="b">gitops:</span> Flux</span><span class="chip"><span class="b">ci:</span> GitHub Actions</span>
+      <span class="chip"><span class="b">obs:</span> Prometheus</span><span class="chip"><span class="b">obs:</span> Grafana</span><span class="chip"><span class="b">obs:</span> OpenTelemetry</span>
+      <span class="chip"><span class="b">sec:</span> Vault</span><span class="chip"><span class="b">sec:</span> OPA / Gatekeeper</span><span class="chip"><span class="b">sec:</span> Trivy</span>
+      <span class="chip"><span class="b">lang:</span> Go</span><span class="chip"><span class="b">lang:</span> Python</span><span class="chip"><span class="b">lang:</span> Bash</span>
+    </div>
+    <p class="note reveal"># swap any of these for what your org already runs — the principles travel.</p>
+  </section>
+
+  <!-- WRITING (dynamic: pulls newest posts) -->
+  <section id="writing">
+    <div class="sec-head reveal"><span class="pmt">$</span> ls -lt <span class="arg">~/writing</span></div>
+    <h2 class="sec-title reveal">From the blog</h2>
+    <p class="sec-lead reveal">Notes on building and simplifying the systems I work on. If I can't explain it, I don't understand it yet.</p>
+    {{ $posts := first 5 (where .Site.RegularPages "Section" "post") }}
+    {{ if $posts }}
+      {{ range $posts }}
+        <a class="post-row reveal" href="{{ .Permalink }}">
+          <span class="date">{{ .Date.Format "2006-01-02" }}</span>
+          <span class="title">{{ .Title }}</span>
+          {{ with .Params.tags }}<span class="tag">{{ index . 0 }}</span>{{ end }}
+        </a>
+      {{ end }}
+      <p class="note reveal"><a href="{{ "/post/" | relURL }}" style="color:var(--accent)">$ ls ~/writing --all →</a></p>
+    {{ else }}
+      <p class="note reveal"># no posts yet — drop markdown into /content/post/ and they appear here automatically.</p>
+    {{ end }}
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact reveal">
+      <div class="prompt">$ ./connect.sh --with {{ .Site.Params.username | default "jeff" }}</div>
+      <h2>Let's build something resilient.</h2>
+      <p>Whether you're scaling a platform, untangling cloud spend, or hardening your security posture — I'd love to hear what you're working on.</p>
+      <div class="socials">
+        {{ with .Site.Params.linkedin }}<a class="social" href="https://linkedin.com/in/{{ . }}" target="_blank" rel="noopener">▸ LinkedIn</a>{{ end }}
+        {{ with .Site.Params.github }}<a class="social" href="https://github.com/{{ . }}" target="_blank" rel="noopener">▸ GitHub</a>{{ end }}
+        {{ with .Site.Params.twitter }}<a class="social" href="https://twitter.com/{{ . }}" target="_blank" rel="noopener">▸ Twitter / X</a>{{ end }}
+        {{ with .Site.Params.email }}<a class="social" href="mailto:{{ . }}">▸ Email</a>{{ end }}
+      </div>
+    </div>
+  </section>
+
+</div>
+{{ end }}

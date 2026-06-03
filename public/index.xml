@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Jeff Bilder</title>
+		<link>http://localhost:1313/</link>
+		<description>Recent content on Jeff Bilder</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 28 May 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Designing a GitOps Pipeline That Survives 3am</title>
+				<link>http://localhost:1313/post/designing-a-gitops-pipeline/</link>
+				<pubDate>Thu, 28 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/post/designing-a-gitops-pipeline/</guid>
+				<description>&lt;p&gt;The best compliment a deploy pipeline can get is silence. Nobody Slacks about it. Nobody&#xA;&amp;ldquo;just kicks off the build.&amp;rdquo; It runs because someone merged a pull request, and the system&#xA;quietly makes reality match the repo.&lt;/p&gt;&#xA;&lt;p&gt;That&amp;rsquo;s the whole idea behind GitOps, and it&amp;rsquo;s less about tooling than it is about a single&#xA;rule: &lt;strong&gt;the desired state of your system lives in git, and a machine — not a human — is&#xA;responsible for closing the gap between git and production.&lt;/strong&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>About</title>
+				<link>http://localhost:1313/about/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/about/</guid>
+				<description>&lt;p&gt;I&amp;rsquo;m Jeff Bilder — a cloud architect and operations leader who builds the boring,&#xA;dependable infrastructure that lets teams move fast without breaking things.&lt;/p&gt;&#xA;&lt;p&gt;Over the years I&amp;rsquo;ve worn the hats of &lt;strong&gt;cloud architect&lt;/strong&gt;, &lt;strong&gt;DevOps manager&lt;/strong&gt;,&#xA;&lt;strong&gt;infrastructure manager&lt;/strong&gt;, and &lt;strong&gt;security operations manager&lt;/strong&gt; — and the thread&#xA;through all of them is the same: take systems that are sprawling, fragile, and&#xA;scary to touch, and turn them into platforms that are automated, observable, and&#xA;secure by default.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

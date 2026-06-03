@@ -1,0 +1,7 @@
+name = "Terminal Status"
+license = "MIT"
+description = "A dark, terminal/status-page Hugo theme for cloud, DevOps, and security professionals."
+min_version = "0.110.0"
+
+[author]
+  name = "Jeff Bilder"

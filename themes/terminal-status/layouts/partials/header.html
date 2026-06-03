@@ -1,0 +1,11 @@
+<nav>
+  <div class="nav-inner">
+    <a href="{{ "/" | relURL }}" class="brand"><span class="pmt">{{ .Site.Params.username | default "jeff" }}@bilder</span>:<span class="path">~</span>$</a>
+    <div class="nav-links">
+      <a href="{{ "/about/" | relURL }}">about</a>
+      <a href="{{ "/post/" | relURL }}">writing</a>
+      <a href="{{ "/tags/" | relURL }}">tags</a>
+    </div>
+    <div class="nav-status"><span class="dot"></span>{{ .Site.Params.status | default "available for engagements" }}</div>
+  </div>
+</nav>
