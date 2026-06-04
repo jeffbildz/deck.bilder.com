@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>From VPC Peering to Transit Gateway: Untangling a Nine-VPC Mesh · Jeff Bilder</title>
+  <meta name="description" content="Why our VPC peering mesh had to die, how a three-Transit-Gateway hub-and-spoke replaced it, and the lessons that only show up in production.">
+  <meta name="author" content="Jeff Bilder">
+
+  
+  <meta property="og:title" content="From VPC Peering to Transit Gateway: Untangling a Nine-VPC Mesh">
+  <meta property="og:description" content="Why our VPC peering mesh had to die, how a three-Transit-Gateway hub-and-spoke replaced it, and the lessons that only show up in production.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="http://localhost:1313/post/vpc-peering-to-transit-gateway/">
+  <meta property="og:image" content="http://localhost:1313/me.jpg">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  
+</head>
+
+<body>
+  <nav>
+  <div class="nav-inner">
+    <a href="/" class="brand"><span class="pmt">jeff@bilder</span>:<span class="path">~</span>$</a>
+    <div class="nav-links">
+      <a href="/experience/">experience</a>
+      <a href="/about/">about</a>
+      <a href="/post/">writing</a>
+      <a href="/tags/">tags</a>
+    </div>
+    <div class="nav-status"><span class="dot"></span>available for engagements</div>
+  </div>
+</nav>
+
+  
+<div class="wrap">
+  <div class="page-head reveal in">
+    <div class="crumb">
+      <a href="/"><span class="pmt">jeff@bilder</span>:~$</a>
+      cd ~/writing/vpc-peering-to-transit-gateway
+    </div>
+    <h1>From VPC Peering to Transit Gateway: Untangling a Nine-VPC Mesh</h1>
+    
+    <div class="post-meta">
+      <span>2026-06-04</span>
+      <span>· 4 min read</span>
+      <a href="/tags/aws/" class="tag">aws</a><a href="/tags/networking/" class="tag">networking</a><a href="/tags/transit-gateway/" class="tag">transit-gateway</a>
+    </div>
+    
+  </div>
+
+  <article class="prose reveal in">
+    <p>VPC peering is one of those AWS features that works great right up until the day it
+quietly becomes your biggest operational liability. Nobody decides to build a peering
+mesh — you just approve one peering connection at a time until you wake up with one.</p>
+<p>Our estate is 26 AWS accounts across US commercial, EU, and GovCloud. The mesh that
+mattered connected nine VPCs across seven of those accounts and three regions. The math
+on full-mesh peering is brutal: nine VPCs means up to 36 peering connections, each with
+its own pair of route table entries, each managed in a different account, each one a
+place for drift to hide.</p>
+<h2 id="the-symptom-that-forced-the-issue">The symptom that forced the issue</h2>
+<p>Peering&rsquo;s defining constraint is that it is <strong>non-transitive</strong>. VPC A can talk to VPC B,
+and B can talk to C, but A cannot reach C through B — ever. AWS will not forward that
+traffic, no matter what your route tables imply.</p>
+<p>For most stateless web traffic you can live with that. Where it bit us was identity:
+<strong>Kerberos and gMSA-based workloads running on ECS Fargate</strong>. Windows containers using
+group Managed Service Accounts need a clean path to domain controllers, and when a task
+landed in a VPC whose only route to the DCs was &ldquo;through&rdquo; another VPC, authentication
+failed in ways that looked nothing like a networking problem. The app teams saw
+credential errors. The actual root cause was a routing topology decision made years
+earlier. Those are the worst kinds of failures — the distance between symptom and cause
+is enormous.</p>
+<p>That was the forcing function. We ran a formal migration assessment across the nine VPCs
+and designed the replacement.</p>
+<h2 id="the-design-three-hubs-scoped-routes">The design: three hubs, scoped routes</h2>
+<p>We landed on a <strong>three-Transit-Gateway hub-and-spoke</strong> — one TGW per region. Every VPC
+gets exactly one attachment to its regional hub. Connectivity stops being a mesh of
+point-to-point agreements and becomes a routing policy you administer in one place.</p>
+<p>The piece that makes TGW more than &ldquo;peering with extra steps&rdquo; is <strong>scoped route tables</strong>.
+A Transit Gateway can hold multiple route tables, and you choose which attachments
+associate with which table. That turns the hub into a segmentation tool: production
+attachments see production routes; lower environments see theirs; nothing is reachable
+by accident. Reachability becomes something you grant deliberately instead of something
+you inherit from topology.</p>
+<p>Our datacenter connectivity hangs off the same hubs with <strong>DC-specific static routes</strong>,
+so hybrid traffic follows the same policy model as everything else.</p>
+<p>And because nothing in our shop exists unless it&rsquo;s in Git, the whole thing is Terraform:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-hcl" data-lang="hcl"><span style="display:flex;"><span><span style="color:#ff7b72">resource</span> <span style="color:#a5d6ff">&#34;aws_ec2_transit_gateway&#34; &#34;hub&#34;</span> {
+</span></span><span style="display:flex;"><span>  description                     <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;regional hub - us-east-1&#34;</span>
+</span></span><span style="display:flex;"><span>  default_route_table_association <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;disable&#34;</span><span style="color:#8b949e;font-style:italic">  # no accidental any-to-any
+</span></span></span><span style="display:flex;"><span>  default_route_table_propagation <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;disable&#34;</span>
+</span></span><span style="display:flex;"><span>  tags                            <span style="color:#ff7b72;font-weight:bold">=</span> { ManagedBy <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;terraform&#34;</span> }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">resource</span> <span style="color:#a5d6ff">&#34;aws_ec2_transit_gateway_vpc_attachment&#34; &#34;app&#34;</span> {
+</span></span><span style="display:flex;"><span>  transit_gateway_id <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#ff7b72">aws_ec2_transit_gateway</span>.<span style="color:#ff7b72">hub</span>.<span style="color:#ff7b72">id</span>
+</span></span><span style="display:flex;"><span>  vpc_id             <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#ff7b72">var</span>.<span style="color:#ff7b72">vpc_id</span>
+</span></span><span style="display:flex;"><span>  subnet_ids         <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#ff7b72">var</span>.<span style="color:#ff7b72">tgw_subnet_ids</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Disabling the default route table association is the line I&rsquo;d underline. The default
+behavior — every attachment propagating into one shared table — silently rebuilds the
+any-to-any mesh you were trying to escape.</p>
+<h2 id="what-only-production-teaches-you">What only production teaches you</h2>
+<p><strong>Inter-region TGW peering does not propagate routes.</strong> Within a region, attachments can
+propagate routes dynamically. Across a TGW peering connection, every route is static —
+you write it, you own it. Plan for that operationally; it isn&rsquo;t in the diagram you drew
+on the whiteboard.</p>
+<p><strong>The cost model inverts.</strong> Peering itself costs nothing; you pay only data transfer.
+Transit Gateway bills per attachment-hour <em>and</em> per gigabyte processed. We accepted the
+trade gladly — predictable spend for an operating model humans can reason about — but
+model it before finance discovers it for you.</p>
+<p><strong>Migrate one VPC at a time.</strong> TGW and peering can coexist, so each VPC moved on its own
+change window: attach, shift routes, verify, then tear the old peerings down. Boring,
+reviewable pull requests. No big-bang cutover.</p>
+<p><strong>Find your transitive dependencies before they find you.</strong> Our Kerberos failure was a
+transitive-routing assumption nobody had written down. Trace your identity, DNS, and
+monitoring paths first — they&rsquo;re always the hidden ones.</p>
+<p>The mesh is gone now. New VPCs get one attachment, one route-table association, one pull
+request. Nobody approves peering connections anymore, and nobody debugs authentication
+errors that are secretly routing errors. That&rsquo;s the whole goal: infrastructure boring
+enough to ignore.</p>
+<p><em>If you&rsquo;re staring down your own peering mesh and wondering whether the migration is
+worth it, I&rsquo;d genuinely enjoy comparing notes.</em></p>
+
+  </article>
+
+  
+  <div class="wrap" style="padding:0 0 40px">
+    <a href="/post/" class="btn ghost">← back to all posts</a>
+  </div>
+  
+</div>
+
+  <footer>
+  <div class="wrap foot-inner">
+    <span>© 2026 Jeff Bilder · built with <a href="https://gohugo.io" style="color:var(--muted)">Hugo</a>, deployed via <span class="ok">GitOps</span></span>
+    <span>$ uptime — <span class="ok">all systems operational</span></span>
+  </div>
+</footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

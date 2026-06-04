@@ -10,9 +10,16 @@
 		
 		
 		
-			<lastBuildDate>Thu, 28 May 2026 00:00:00 +0000</lastBuildDate>
+			<lastBuildDate>Thu, 04 Jun 2026 00:00:00 +0000</lastBuildDate>
 		
 			<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>From VPC Peering to Transit Gateway: Untangling a Nine-VPC Mesh</title>
+				<link>http://localhost:1313/post/vpc-peering-to-transit-gateway/</link>
+				<pubDate>Thu, 04 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/post/vpc-peering-to-transit-gateway/</guid>
+				<description>&lt;p&gt;VPC peering is one of those AWS features that works great right up until the day it&#xA;quietly becomes your biggest operational liability. Nobody decides to build a peering&#xA;mesh — you just approve one peering connection at a time until you wake up with one.&lt;/p&gt;&#xA;&lt;p&gt;Our estate is 26 AWS accounts across US commercial, EU, and GovCloud. The mesh that&#xA;mattered connected nine VPCs across seven of those accounts and three regions. The math&#xA;on full-mesh peering is brutal: nine VPCs means up to 36 peering connections, each with&#xA;its own pair of route table entries, each managed in a different account, each one a&#xA;place for drift to hide.&lt;/p&gt;</description>
+			</item>
 			<item>
 				<title>Designing a GitOps Pipeline That Survives 3am</title>
 				<link>http://localhost:1313/post/designing-a-gitops-pipeline/</link>
