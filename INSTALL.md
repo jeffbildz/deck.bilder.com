@@ -9,7 +9,7 @@ automatically rebuilds and deploys on every push to master. This bundle drops in
 config.toml                  → replaces your root config.toml
 content/about.md             → your About page
 content/experience.md        → the resume/timeline page
-content/post/…               → blog posts (GitOps pipeline + Transit Gateway)
+content/post/…               → blog post (GitOps pipeline)
 themes/terminal-status/      → the dark theme
 static/CNAME                 → harmless on Render; safe to keep or delete
 .gitignore                   → stops committing the built /public folder

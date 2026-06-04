@@ -22,9 +22,9 @@ jobs:
     current: true
     highlights:
       - "Manage a team of <span class='num'>7</span> DevOps engineers operating a multi-region SaaS platform across AWS commercial, AWS GovCloud, and Azure DevOps — owning hiring, mentorship, performance, and roadmap."
-      - "Led a VPC-peering &rarr; <b>Transit Gateway</b> migration spanning 9 VPCs across 7 AWS accounts and 3 regions, designing a three-TGW hub-and-spoke architecture with scoped routing."
+      - "Led a VPC-peering &rarr; <b>Transit Gateway</b> migration, designing a hub-and-spoke architecture with scoped route tables for network segmentation."
       - "Manage <span class='num'>26</span> AWS accounts across US commercial, EU, and GovCloud — provisioned with consistent VPC, IAM, and observability baselines via <b>Terraform</b>."
-      - "Ran an IAM least-privilege audit across <span class='num'>14</span> environments, identifying and remediating access outliers."
+      - "Ran IAM least-privilege audits across all environments, identifying and remediating access outliers."
       - "Migrated QA build agents from TeamCity to <b>Azure DevOps</b> on EC2 Auto Scaling Groups (up to 40) with pre-baked AMIs, hitting a one-hour SLA for Playwright sharded test execution."
       - "Standardized reusable Azure DevOps YAML pipeline templates enforcing consistent build, test, security-scan, and release stages across the engineering org."
       - "Built event-driven pipelines producing <b>DISA STIG CAT II</b>-compliant machine images with Ansible."

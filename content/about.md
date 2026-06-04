@@ -33,8 +33,8 @@ decisions into clear business outcomes.
 ## Recent work
 
 At [Origami Risk](https://www.origamirisk.com) I've led a VPC-peering to Transit Gateway
-migration across 9 VPCs and 7 accounts, standardized Azure DevOps pipeline templates for the
-whole engineering org, run IAM least-privilege audits across 14 environments, and shipped
+migration, standardized Azure DevOps pipeline templates for the
+whole engineering org, run IAM least-privilege audits across our environments, and shipped
 DISA STIG-compliant imaging — all under Git peer review.
 
 ## Let's talk
