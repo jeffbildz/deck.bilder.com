@@ -3,47 +3,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/tags/aws/</loc>
+    <loc>http://localhost:61625/tags/aws/</loc>
     <lastmod>2026-06-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>http://localhost:61625/categories/</loc>
     <lastmod>2026-06-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/vpc-peering-to-transit-gateway/</loc>
+    <loc>http://localhost:61625/post/vpc-peering-to-transit-gateway/</loc>
     <lastmod>2026-06-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/infrastructure/</loc>
+    <loc>http://localhost:61625/categories/infrastructure/</loc>
     <lastmod>2026-06-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>http://localhost:61625/</loc>
     <lastmod>2026-06-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/networking/</loc>
+    <loc>http://localhost:61625/tags/networking/</loc>
     <lastmod>2026-06-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/</loc>
+    <loc>http://localhost:61625/post/</loc>
     <lastmod>2026-06-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>http://localhost:61625/tags/</loc>
     <lastmod>2026-06-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/transit-gateway/</loc>
+    <loc>http://localhost:61625/tags/transit-gateway/</loc>
     <lastmod>2026-06-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/ci-cd/</loc>
+    <loc>http://localhost:61625/tags/ci-cd/</loc>
     <lastmod>2026-05-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/designing-a-gitops-pipeline/</loc>
+    <loc>http://localhost:61625/post/designing-a-gitops-pipeline/</loc>
     <lastmod>2026-05-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/devops/</loc>
+    <loc>http://localhost:61625/tags/devops/</loc>
     <lastmod>2026-05-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/gitops/</loc>
+    <loc>http://localhost:61625/tags/gitops/</loc>
     <lastmod>2026-05-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>http://localhost:61625/about/</loc>
   </url><url>
-    <loc>http://localhost:1313/experience/</loc>
+    <loc>http://localhost:61625/experience/</loc>
   </url>
 </urlset>

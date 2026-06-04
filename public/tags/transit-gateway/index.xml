@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
-		<title>Networking on Jeff Bilder</title>
-		<link>http://localhost:61625/tags/networking/</link>
-		<description>Recent content in Networking on Jeff Bilder</description>
+		<title>Transit-Gateway on Jeff Bilder</title>
+		<link>http://localhost:61625/tags/transit-gateway/</link>
+		<description>Recent content in Transit-Gateway on Jeff Bilder</description>
 		<generator>Hugo</generator>
 		<language>en-us</language>
 		
@@ -12,7 +12,7 @@
 		
 			<lastBuildDate>Thu, 04 Jun 2026 00:00:00 +0000</lastBuildDate>
 		
-			<atom:link href="http://localhost:61625/tags/networking/index.xml" rel="self" type="application/rss+xml" />
+			<atom:link href="http://localhost:61625/tags/transit-gateway/index.xml" rel="self" type="application/rss+xml" />
 			<item>
 				<title>From VPC Peering to Transit Gateway: Untangling a Nine-VPC Mesh</title>
 				<link>http://localhost:61625/post/vpc-peering-to-transit-gateway/</link>
