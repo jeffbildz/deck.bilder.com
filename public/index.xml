@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Jeff Bilder</title>
+		<link>http://localhost:1313/</link>
+		<description>Recent content on Jeff Bilder</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 28 May 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Designing a GitOps Pipeline That Survives 3am</title>
+				<link>http://localhost:1313/post/designing-a-gitops-pipeline/</link>
+				<pubDate>Thu, 28 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/post/designing-a-gitops-pipeline/</guid>
+				<description>&lt;p&gt;The best compliment a deploy pipeline can get is silence. Nobody Slacks about it. Nobody&#xA;&amp;ldquo;just kicks off the build.&amp;rdquo; It runs because someone merged a pull request, and the system&#xA;quietly makes reality match the repo.&lt;/p&gt;&#xA;&lt;p&gt;That&amp;rsquo;s the whole idea behind GitOps, and it&amp;rsquo;s less about tooling than it is about a single&#xA;rule: &lt;strong&gt;the desired state of your system lives in git, and a machine — not a human — is&#xA;responsible for closing the gap between git and production.&lt;/strong&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>About</title>
+				<link>http://localhost:1313/about/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/about/</guid>
+				<description>&lt;p&gt;I&amp;rsquo;m Jeff Bilder — a &lt;strong&gt;DevOps and infrastructure leader&lt;/strong&gt; with 20+ years across the software,&#xA;risk management, and security sectors.&lt;/p&gt;&#xA;&lt;p&gt;My career started where a lot of good infrastructure people start: hands-on, configuring&#xA;redundant Cisco networks, building Linux mail clusters, and writing scripts to make manual&#xA;work disappear. Over time that grew into architecting datacenters, managing multi-million-dollar&#xA;budgets, and today &lt;strong&gt;leading a team of 7 DevOps engineers&lt;/strong&gt; operating a multi-region SaaS&#xA;platform across AWS commercial, AWS GovCloud, and Azure DevOps.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Experience</title>
+				<link>http://localhost:1313/experience/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/experience/</guid>
+				<description>&lt;p&gt;From hand-configuring redundant Cisco networks in 1999 to managing a team automating&#xA;multi-region AWS, GovCloud, and Azure DevOps estates today, the throughline has stayed the&#xA;same: take infrastructure that&amp;rsquo;s sprawling, fragile, and manual, and turn it into something&#xA;automated, observable, and secure. Equally at home diagnosing a 2 AM production outage and&#xA;presenting architectural trade-offs to executives. Below is the path that got me here.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>
